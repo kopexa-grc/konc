@@ -1,6 +1,10 @@
+// Copyright (c) Kopexa GmbH
+// SPDX-License-Identifier: BUSL-1.1
+
 package konc
 
 import (
+	"log"
 	"sync"
 
 	"github.com/alitto/pond/v2"
@@ -21,7 +25,7 @@ type Pool struct {
 // By default, the pool allows up to 1000 concurrent goroutines.
 func NewPool(opts ...PoolOptions) *Pool {
 	p := &Pool{
-		MaxGoroutines: 1000,
+		MaxGoroutines: DefaultMaxGoroutines,
 	}
 
 	for _, opt := range opts {
@@ -36,7 +40,10 @@ func NewPool(opts ...PoolOptions) *Pool {
 // Go submits a function to be executed by the pool.
 // The function will be executed asynchronously by one of the pool's workers.
 func (p *Pool) Go(f func()) {
-	p.pool.Go(f)
+	err := p.pool.Go(f)
+	if err != nil {
+		log.Println(ErrPoolGoFailed, err)
+	}
 }
 
 // GoMultipleAndWait submits multiple functions to the pool and waits for all to complete.
