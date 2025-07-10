@@ -4,10 +4,10 @@
 package konc
 
 import (
-	"log"
 	"sync"
 
 	"github.com/alitto/pond/v2"
+	"github.com/rs/zerolog/log"
 )
 
 // Pool provides a managed worker pool for executing concurrent tasks.
@@ -42,7 +42,7 @@ func NewPool(opts ...PoolOptions) *Pool {
 func (p *Pool) Go(f func()) {
 	err := p.pool.Go(f)
 	if err != nil {
-		log.Println(ErrPoolGoFailed, err)
+		log.Error().Err(err).Msg(ErrPoolGoFailed.Error())
 	}
 }
 
