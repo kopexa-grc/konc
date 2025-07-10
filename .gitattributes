@@ -1,0 +1,5 @@
+*.go linguist-detectable=true text eol=lf
+*.html linguist-detectable=false
+# everything in /internal/store/ent ist generated expect /internal/store/ent/schema
+internal/store/ent/*.go linguist-detectable=false
+internal/store/ent/schema/*.go linguist-detectable=true
