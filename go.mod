@@ -8,7 +8,10 @@ tool (
 	mvdan.cc/gofumpt
 )
 
-require github.com/alitto/pond/v2 v2.4.0
+require (
+	github.com/alitto/pond/v2 v2.5.0
+	github.com/rs/zerolog v1.34.0
+)
 
 require (
 	4d63.com/gocheckcompilerdirectives v1.3.0 // indirect
@@ -157,7 +160,6 @@ require (
 	github.com/raeperd/recvcheck v0.2.0 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.14.1 // indirect
-	github.com/rs/zerolog v1.34.0 // indirect
 	github.com/ryancurrah/gomodguard v1.4.1 // indirect
 	github.com/ryanrolds/sqlclosecheck v0.5.1 // indirect
 	github.com/sanposhiho/wastedassign/v2 v2.1.0 // indirect
